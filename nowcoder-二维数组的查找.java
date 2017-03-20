@@ -12,17 +12,17 @@
 
 为什么不能从左上：有两个方向都可变化
 
-还可以用二分查找
+还可以用二分查找（第二次用这种）
 */
 public class Solution {
     public boolean Find(int target, int [][] array) {
-		int row=array.length-1;
-        int col=0;
-        while(row >=0 && col <= array[0].length-1){
-            if(target == array[row][col]){
+		int row=array.length-1;               //从最后一行
+        int col=0;                              //第一列开始，即左下角
+        while(row >=0 && col <= array[0].length-1){       //边界检测
+            if(target == array[row][col]){        
                 return true;
             }
-            if(target <array[row][col]){
+            if(target <array[row][col]){        //根据思路进行行列的移动
                 row--;
             }
             else
