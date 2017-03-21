@@ -3,6 +3,12 @@
 我们需要合成后的链表满足单调不减规则。
 */
 
+/*
+思路1：
+使用递归
+思路2：
+非递归：使用一个current，不停向后移，merge为最初的第一个，最后返回merge
+*/
 
 
 
@@ -16,31 +22,24 @@ public class ListNode {
         this.val = val;
     }
 }*/
+//思路1：
 public class Solution {
     public ListNode Merge(ListNode list1,ListNode list2) {
         ListNode newlist=null;
-        while(list1 != null || list2 != null){
-            if(list1 == null){
-                while(list2 != null){
-                newlist=list2;
-                list2=list2.next;
-                }
-            }
-            if(list2 == null){
-                while(list1 != null){
-                newlist=list1;
-                list1=list1.next;
-                }
-            }
-            if(list1.val<list2.val){
-                newlist=list1;
-                list1=list1.next;
-            }
-            else{
-                newlist=list2;
-                list2=list2.next;
-            }  
+        if(list1 == null)
+            return list2;
+        if(list2 == null)
+            return list1;
+
+        if(list1.val<list2.val){
+            newlist=list1;
+            newlist.next=Merge(list1.next,list2);
+        }
+        else{
+            newlist=list2;
+            newlist.next=Merge(list1,list2.next);
         }
         return newlist;
     }
 }
+
