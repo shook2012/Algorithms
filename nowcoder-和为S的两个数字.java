@@ -21,7 +21,7 @@ public class Solution {
     public static ArrayList<Integer> FindNumbersWithSum(int[] array, int sum) {
         ArrayList<Integer> res = new ArrayList<Integer>();
         int low = 0, high = array.length-1;
-       
+        
         while ( low < high) {
             if ((array[low] + array[high]) < sum)
                 low++;
